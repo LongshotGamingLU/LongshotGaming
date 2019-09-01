@@ -1,1 +1,1 @@
-web: gunicorn LongshotGaming.wsgi
+web: gunicorn bootcamp.wsgi --log-file -
