@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'ComingSoon',
+    'LongshotGaming',
+    'User',
 ]
 
 MIDDLEWARE = [
@@ -124,9 +127,9 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = (
-#     os.path.join(PROJECT_ROOT, 'staticfiles'),
-# )
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'ComingSoon', 'templates'),
+)
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
