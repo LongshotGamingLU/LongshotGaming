@@ -1,0 +1,131 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <header>
+        <style>
+            p {
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 1.3em;
+            }
+
+            div {
+                width: 35%;
+                margin: auto;
+            }
+
+            code {
+                font-family: monospace;
+            }
+
+            img {
+                max-width: 256px;
+            }
+
+            h1 {
+                font-size: 2.3em;
+            }
+
+            h3 {
+                font-size: 1.8em;
+            }
+
+            h4 {
+                font-size: 1.5em;
+            }
+        </style>
+    </header>
+
+    <body>
+        <div>
+            <h1>Welcome to the event page!</h1>
+        </div>
+
+        <div>
+            <h3>Some helpful tips for writing dynamic HTML</h3>
+            <h4>Important Note!!</h4>
+            <p>
+                Always begin your HTML files with <br/><br/>
+                <code>
+                    {%verbatim%}{% load static %}{% endverbatim %}<br/>
+                </code><br/>
+                Otherwise you will not load anything.
+            </p>
+
+            <h4>Adding Images</h4>
+            <p>
+                To include an image in the HTML make sure to add it to the assets directory
+                and then obtain the url relative to the root of that directory.
+                <br/><br/>
+                IMPORTANT!!<br/>
+                Make sure to run this command:
+                <br/><br/>
+                <code>
+                    python3 manage.py collectstatic
+                </code>
+                <br/><br/>
+                Every time you add new images or css files or javascript files. If you 
+                don't, then the server will not serve the css, javascript or images, and you 
+                will be wondering why you don't see your code doing anything.
+                <br/><br/>
+                For example, I have an image located in assets/img/logo.png in order to
+                reference it within this html, I would write the html like the following:
+                <br/><br/>
+                    <code>
+                        &LeftAngleBracket;img src='{%verbatim%}{% static "img/logo.png" %}{%endverbatim%}' alt="bison-logo" /&RightAngleBracket;
+                    </code>
+            </p>
+
+            <div>
+                <img src='{% static "img/logo.png" %}' alt="bison-logo" />
+            </div>
+
+            <h4>Linking to other pages</h4>
+
+            <p>
+                Links should are not too difficult, you just have to make sure you 
+                are looking exactly where you need to link to inside the <code>urls.py</code> file.
+                <br/><br/>
+                An example link, linking to another internal page would look like this:
+                <br/><br/>
+                <code>
+                    &LeftAngleBracket;a href="{%verbatim%}{% url 'leaderboardIndex' %}{%endverbatim%}"&RightAngleBracket;Leaderboard&LeftAngleBracket;/a&RightAngleBracket;
+                </code>
+                <br/><br/>
+                where <code>'leaderboardIndex'</code> is the name of the link you want to link to,
+                which can be found inside of the <code>urls.py</code> file in the directory of 
+                the page you would like to link to. In this case inside the Leaderboard/urls.py
+                <br/><br/>
+                The link looks like this: <a href="{% url 'leaderboardIndex' %}">Leaderboard</a>
+            </p>
+
+            
+            <h4>Dynamic HTML</h4>
+
+            <p>
+                If you ever want to access some variable passed into the context, you can access that variable via
+                some code that looks like this:
+                <br/><br/>
+                <code>
+                    {%verbatim%}&LeftAngleBracket;p&RightAngleBracket; Hi, {{ user.name }}. Your email is {{ user.email }}&LeftAngleBracket;/p&RightAngleBracket;{%endverbatim%}
+                </code>
+                <br/><br/>
+                In this case, the context that was passed in would have looked something like this:
+                <br/><br/>
+                <code>
+                    def index(request):<br/>
+                    &emsp;context = {<br/>
+                    &emsp;&emsp;"user": {<br/>
+                    &emsp;&emsp;&emsp;"name": "Gabe",<br/>
+                    &emsp;&emsp;&emsp;"email": "myemail@gmail.com"<br/>
+                    &emsp;&emsp;}<br/>
+                    &emsp;}<br/>
+                </code>
+                <br/><br/>
+                Which you should be able to find inside of <code>views.py</code>
+                <br/><br/>
+                I think that should be it, if you guys have any other questions direct message me in the groupme.
+            </p>
+        </div>
+    </body>
+</html>
