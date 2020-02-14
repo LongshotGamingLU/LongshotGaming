@@ -27,7 +27,7 @@ SECRET_KEY = 'zs7vr4mu%y#pb@(mt=qtwp&x#r3tj8-ysqm$x4qlkru&l0x-d_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost:8000.com']
 
 
 # Application definition
@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'ComingSoon',
     'LongshotGaming',
     'User',
+    'Leaderboard',
+    'EventPage',
+    'Homepage'
 ]
 
 MIDDLEWARE = [
@@ -128,7 +131,11 @@ STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'EventPage', 'templates'),
     os.path.join(PROJECT_ROOT, 'ComingSoon', 'templates'),
+    os.path.join(PROJECT_ROOT, 'Homepage', 'templates'),
+    os.path.join(PROJECT_ROOT, 'Leaderboard', 'templates'),
+    os.path.join(PROJECT_ROOT, 'User', 'templates'),
     os.path.join(PROJECT_ROOT, 'assets'),
 )
 
