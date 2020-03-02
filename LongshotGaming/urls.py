@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', include('Homepage.urls')),
@@ -23,4 +25,5 @@ urlpatterns = [
     path('event-page/', include('EventPage.urls')),
     path('coming-soon/', include('ComingSoon.urls')),
     path('admin/', admin.site.urls),
+    url(r'^oauth/', include('social_django.urls', namespace='social'))
 ]
