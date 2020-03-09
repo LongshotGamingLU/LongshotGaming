@@ -1,35 +1,329 @@
-<!-- 
-    Try typing in random numbers after the url like
-        localhost:800.com/user/123
-    and the web page should greet you with the
-    user id entered
--->
+{% load static %}
 <!DOCTYPE html>
-<html>
-    <header>
+<html  >
+<head>
 
-    </header>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.10.10, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="/static/User/assets/images/lipscomblongsh-khc20-1a-900x900.png" type="image/x-icon">
+  <meta name="description" content="Web Builder Description">
 
-    {% if user %}
-    <body>
-        <div>
-            <p>Welcome, {{ user.first_name }}!</p>
-            <p>Email: {{ user.email }}</p> 
-            <p>Username: {{ user.username }}</p>
-            <p>First Name: {{ user.first_name }}</p>
-            <p>Last Name: {{ user.last_name }}</p>
-            <p>Picture: {{ user.picture }}</p>
-            <a href="{% url 'logout' %}">Logout</a>
+  <title>Longshot - User Page</title>
+  <link rel="preload" as="style" href="/static/User/assets/web/assets/mobirise-icons/mobirise-icons.css">
+<link rel="stylesheet" href="/static/User/assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="preload" as="style" href="/static/User/assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/User/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="preload" as="style" href="/static/User/assets/bootstrap/css/bootstrap-grid.min.css">
+<link rel="stylesheet" href="/static/User/assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="preload" as="style" href="/static/User/assets/bootstrap/css/bootstrap-reboot.min.css">
+<link rel="stylesheet" href="/static/User/assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="/static/User/assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="/static/User/assets/tether/tether.min.css">
+  <link rel="stylesheet" href="/static/User/assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="/static/User/assets/theme/css/style.css">
+  <link rel="preload" as="style" href="/static/User/assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/static/User/assets/mobirise/css/mbr-additional.css" type="text/css">
+
+
+
+</head>
+{% if user %}
+<body>
+  <section class="menu cid-rPyGjF6GRS" once="menu" id="menu1-3">
+
+
+
+    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="menu-logo">
+            <div class="navbar-brand">
+
+
+            </div>
         </div>
-    </body>
-    {% else %}
-    <body>
-        <div>
-            <h1>Please login...</h1>
-            <a href="{% url 'social:begin' 'google-oauth2' %}">
-                <img id="signInButton" src="http://www.setyourowntests.com/_/rsrc/1468869481521/help/accounts/btn_google_signin_dark_normal_web%402x.png" onclick="document.getElementById('signInButton').src='http://www.setyourowntests.com/_/rsrc/1468869481521/help/accounts/btn_google_signin_dark_normal_web%402x.png'">
-               </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-dropdown nav-right navbar-nav-top-padding" data-app-modern-menu="true"><li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'homepageIndex' %}">
+
+                        HOME</a>
+                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="{% url 'leaderboardIndex' %}">
+
+                        RANKING</a></li><li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'eventPageIndex' %}">
+
+                        EVENTS</a>
+                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="{% url 'usersIndex' %}">
+
+                        PROFILE</a></li></ul>
+
         </div>
-    </body>
-    {% endif %}
+    </nav>
+</section>
+
+<section class="engine"><a href=""></a></section><section class="header4 cid-rStJRwrkjB mbr-parallax-background" id="header4-h">
+
+
+
+    <div class="mbr-overlay" style="opacity: 0.7; background-color: rgb(58, 36, 69);">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="media-content col-md-10">
+
+
+                <div class="mbr-text align-center mbr-white pb-3">
+
+                </div>
+
+            </div>
+            <div class="mbr-figure pt-5">
+                <img src="{{ user.picture }}" alt="Mobirise" title="" style="width: 20%;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mbr-section content4 cid-rStI4wHfcR" id="content4-e">
+
+
+
+    <div class="container">
+        <div class="media-container-row">
+            <div class="title col-12 col-md-8">
+                <h2 class="align-center pb-3 mbr-fonts-style display-2">
+                    {{ user.username }}</h2>
+                <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5">Email: {{ user.email }}<br>First Name: {{ user.first_name }}<br>Last Name: {{ user.last_name }}<br>Username: {{ user.username }}<br><a href="{% url 'logout' %}">Logout</a></h3>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cid-rStJdJLT0U mbr-parallax-background" id="header2-g">
+
+
+
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);"></div>
+
+    <div class="container align-center">
+        <div class="row justify-content-md-center">
+            <div class="mbr-white col-md-10">
+                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">
+                    RANK</h1>
+
+                <p class="mbr-text pb-3 mbr-fonts-style display-1">22</p>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section once="footers" class="cid-rPyToCgTij" id="footer7-8">
+
+
+
+
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+
+            <div class="row social-row">
+                <div class="social-list align-right pb-2">
+
+
+
+
+
+
+                <div class="soc-item">
+
+                            <a href="https://www.instagram.com/lu.longshot.gaming/?hl=en" target="_blank"><span class="mbr-iconfont mbr-iconfont-social socicon-instagram socicon"></span></a>
+
+                    </div><div class="soc-item">
+
+                            <a href="https://www.facebook.com/LU.longshot.gaming" target="_blank"><span class="mbr-iconfont mbr-iconfont-social socicon-facebook socicon"></span></a>
+
+                    </div></div>
+            </div>
+            <div class="row row-copirayt">
+                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">longshotgaming@lipscomb.edu</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="/static/User/assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="/static/User/assets/popper/popper.min.js"></script>
+  <script src="/static/User/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script async src="/static/User/assets/tether/tether.min.js"></script>
+  <script async src="/static/User/assets/parallax/jarallax.min.js"></script>
+  <script async src="/static/User/assets/dropdown/js/nav-dropdown.js"></script>
+  <script async src="/static/User/assets/dropdown/js/navbar-dropdown.js"></script>
+  <script async src="/static/User/assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script async src="/static/User/assets/smoothscroll/smooth-scroll.js"></script>
+  <script async src="/static/User/assets/theme/js/script.js"></script>
+
+
+</body>
+
+{% else %}
+<body>
+  <section class="menu cid-rPyGjF6GRS" once="menu" id="menu1-3">
+
+
+
+    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="menu-logo">
+            <div class="navbar-brand">
+
+
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-dropdown nav-right navbar-nav-top-padding" data-app-modern-menu="true"><li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'homepageIndex' %}">
+
+                        HOME</a>
+                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="{% url 'leaderboardIndex' %}">
+
+                        RANKING</a></li><li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'eventPageIndex' %}">
+
+                        EVENTS</a>
+                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="{% url 'usersIndex' %}">
+
+                        PROFILE</a></li></ul>
+
+        </div>
+    </nav>
+</section>
+
+<section class="engine"><a href=""></a></section><section class="header4 cid-rStJRwrkjB mbr-parallax-background" id="header4-h">
+
+
+
+    <div class="mbr-overlay" style="opacity: 0.7; background-color: rgb(58, 36, 69);">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="media-content col-md-10">
+
+
+                <div class="mbr-text align-center mbr-white pb-3">
+
+                </div>
+
+            </div>
+            <div class="mbr-figure pt-5">
+                <img src="/static/User/assets/images/blank-profile-picture-973460-960-720-720x720.png" alt="Avatar" title="" style="width: 20%;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mbr-section content4 cid-rStI4wHfcR" id="content4-e">
+
+
+
+    <div class="container">
+        <div class="media-container-row">
+            <div class="title col-12 col-md-8">
+                <h2 class="align-center pb-3 mbr-fonts-style display-2">
+                    Please Login</h2>
+                <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5"><a href="{% url 'social:begin' 'google-oauth2' %}">
+                    <img id="signInButton" src="http://www.setyourowntests.com/_/rsrc/1468869481521/help/accounts/btn_google_signin_dark_normal_web%402x.png" onclick="document.getElementById('signInButton').src='http://www.setyourowntests.com/_/rsrc/1468869481521/help/accounts/btn_google_signin_dark_normal_web%402x.png'">
+                   </a></h3>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cid-rStJdJLT0U mbr-parallax-background" id="header2-g">
+
+
+
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);"></div>
+
+    <div class="container align-center">
+        <div class="row justify-content-md-center">
+            <div class="mbr-white col-md-10">
+                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">
+                    RANK</h1>
+
+                <p class="mbr-text pb-3 mbr-fonts-style display-1">--</p>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section once="footers" class="cid-rPyToCgTij" id="footer7-8">
+
+
+
+
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+
+            <div class="row social-row">
+                <div class="social-list align-right pb-2">
+
+
+
+
+
+
+                <div class="soc-item">
+
+                            <a href="https://www.instagram.com/lu.longshot.gaming/?hl=en" target="_blank"><span class="mbr-iconfont mbr-iconfont-social socicon-instagram socicon"></span></a>
+
+                    </div><div class="soc-item">
+
+                            <a href="https://www.facebook.com/LU.longshot.gaming" target="_blank"><span class="mbr-iconfont mbr-iconfont-social socicon-facebook socicon"></span></a>
+
+                    </div></div>
+            </div>
+            <div class="row row-copirayt">
+                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">longshotgaming@lipscomb.edu</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="/static/User/assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="/static/User/assets/popper/popper.min.js"></script>
+  <script src="/static/User/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script async src="/static/User/assets/tether/tether.min.js"></script>
+  <script async src="/static/User/assets/parallax/jarallax.min.js"></script>
+  <script async src="/static/User/assets/dropdown/js/nav-dropdown.js"></script>
+  <script async src="/static/User/assets/dropdown/js/navbar-dropdown.js"></script>
+  <script async src="/static/User/assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script async src="/static/User/assets/smoothscroll/smooth-scroll.js"></script>
+  <script async src="/static/User/assets/theme/js/script.js"></script>
+</body>
+{% endif %}
 </html>

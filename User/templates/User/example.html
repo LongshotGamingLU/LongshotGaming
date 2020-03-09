@@ -1,0 +1,35 @@
+<!-- 
+    Try typing in random numbers after the url like
+        localhost:800.com/user/123
+    and the web page should greet you with the
+    user id entered
+-->
+<!DOCTYPE html>
+<html>
+    <header>
+
+    </header>
+
+    {% if user %}
+    <body>
+        <div>
+            <p>Welcome, {{ user.first_name }}!</p>
+            <p>Email: {{ user.email }}</p> 
+            <p>Username: {{ user.username }}</p>
+            <p>First Name: {{ user.first_name }}</p>
+            <p>Last Name: {{ user.last_name }}</p>
+            <p>Picture: {{ user.picture }}</p>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    </body>
+    {% else %}
+    <body>
+        <div>
+            <h1>Please login...</h1>
+            <a href="{% url 'social:begin' 'google-oauth2' %}">
+                <img id="signInButton" src="http://www.setyourowntests.com/_/rsrc/1468869481521/help/accounts/btn_google_signin_dark_normal_web%402x.png" onclick="document.getElementById('signInButton').src='http://www.setyourowntests.com/_/rsrc/1468869481521/help/accounts/btn_google_signin_dark_normal_web%402x.png'">
+               </a>
+        </div>
+    </body>
+    {% endif %}
+</html>

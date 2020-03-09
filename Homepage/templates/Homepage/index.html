@@ -1,131 +1,164 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html>
-    <header>
-        <style>
-            p {
-                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-                font-size: 1.3em;
-            }
+<html  >
+<head>
 
-            div {
-                width: 35%;
-                margin: auto;
-            }
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.10.10, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="static/Homepage/assets/images/lipscomblongsh-khc20-1a-900x900.png" type="image/x-icon">
+  <meta name="description" content="">
 
-            code {
-                font-family: monospace;
-            }
+  <title>Longshot Gaming</title>
+  <link rel="preload" as="style" href="static/Homepage/assets/web/assets/mobirise-icons/mobirise-icons.css">
+<link rel="stylesheet" href="static/Homepage/assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="preload" as="style" href="static/Homepage/assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="static/Homepage/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="preload" as="style" href="static/Homepage/assets/bootstrap/css/bootstrap-grid.min.css">
+<link rel="stylesheet" href="static/Homepage/assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="preload" as="style" href="static/Homepage/assets/bootstrap/css/bootstrap-reboot.min.css">
+<link rel="stylesheet" href="static/Homepage/assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="static/Homepage/assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="static/Homepage/assets/tether/tether.min.css">
+  <link rel="stylesheet" href="static/Homepage/assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="static/Homepage/assets/theme/css/style.css">
+  <link rel="preload" as="style" href="static/Homepage/assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="static/Homepage/assets/mobirise/css/mbr-additional.css" type="text/css">
 
-            img {
-                max-width: 256px;
-            }
 
-            h1 {
-                font-size: 2.3em;
-            }
 
-            h3 {
-                font-size: 1.8em;
-            }
+</head>
+<body>
+  <section class="menu cid-rPyGjF6GRS" once="menu" id="menu1-1">
 
-            h4 {
-                font-size: 1.5em;
-            }
-        </style>
-    </header>
 
-    <body>
-        <div>
-            <h1>Welcome to the homepage!</h1>
-        </div>
 
-        <div>
-            <h3>Some helpful tips for writing dynamic HTML</h3>
-            <h4>Important Note!!</h4>
-            <p>
-                Always begin your HTML files with <br/><br/>
-                <code>
-                    {%verbatim%}{% load static %}{% endverbatim %}<br/>
-                </code><br/>
-                Otherwise you will not load anything.
-            </p>
-
-            <h4>Adding Images</h4>
-            <p>
-                To include an image in the HTML make sure to add it to the assets directory
-                and then obtain the url relative to the root of that directory.
-                <br/><br/>
-                IMPORTANT!!<br/>
-                Make sure to run this command:
-                <br/><br/>
-                <code>
-                    python3 manage.py collectstatic
-                </code>
-                <br/><br/>
-                Every time you add new images or css files or javascript files. If you 
-                don't, then the server will not serve the css, javascript or images, and you 
-                will be wondering why you don't see your code doing anything.
-                <br/><br/>
-                For example, I have an image located in assets/img/logo.png in order to
-                reference it within this html, I would write the html like the following:
-                <br/><br/>
-                    <code>
-                        &LeftAngleBracket;img src='{%verbatim%}{% static "img/logo.png" %}{%endverbatim%}' alt="bison-logo" /&RightAngleBracket;
-                    </code>
-            </p>
-
-            <div>
-                <img src='{% static "img/logo.png" %}' alt="bison-logo" />
+    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+        </button>
+        <div class="menu-logo">
+            <div class="navbar-brand">
 
-            <h4>Linking to other pages</h4>
 
-            <p>
-                Links should are not too difficult, you just have to make sure you 
-                are looking exactly where you need to link to inside the <code>urls.py</code> file.
-                <br/><br/>
-                An example link, linking to another internal page would look like this:
-                <br/><br/>
-                <code>
-                    &LeftAngleBracket;a href="{%verbatim%}{% url 'leaderboardIndex' %}{%endverbatim%}"&RightAngleBracket;Leaderboard&LeftAngleBracket;/a&RightAngleBracket;
-                </code>
-                <br/><br/>
-                where <code>'leaderboardIndex'</code> is the name of the link you want to link to,
-                which can be found inside of the <code>urls.py</code> file in the directory of 
-                the page you would like to link to. In this case inside the Leaderboard/urls.py
-                <br/><br/>
-                The link looks like this: <a href="{% url 'leaderboardIndex' %}">Leaderboard</a>
-            </p>
-
-            
-            <h4>Dynamic HTML</h4>
-
-            <p>
-                If you ever want to access some variable passed into the context, you can access that variable via
-                some code that looks like this:
-                <br/><br/>
-                <code>
-                    {%verbatim%}&LeftAngleBracket;p&RightAngleBracket; Hi, {{ user.name }}. Your email is {{ user.email }}&LeftAngleBracket;/p&RightAngleBracket;{%endverbatim%}
-                </code>
-                <br/><br/>
-                In this case, the context that was passed in would have looked something like this:
-                <br/><br/>
-                <code>
-                    def index(request):<br/>
-                    &emsp;context = {<br/>
-                    &emsp;&emsp;"user": {<br/>
-                    &emsp;&emsp;&emsp;"name": "Gabe",<br/>
-                    &emsp;&emsp;&emsp;"email": "myemail@gmail.com"<br/>
-                    &emsp;&emsp;}<br/>
-                    &emsp;}<br/>
-                </code>
-                <br/><br/>
-                Which you should be able to find inside of <code>views.py</code>
-                <br/><br/>
-                I think that should be it, if you guys have any other questions direct message me in the groupme.
-            </p>
+            </div>
         </div>
-    </body>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-dropdown nav-right navbar-nav-top-padding" data-app-modern-menu="true"><li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'homepageIndex' %}">
+
+                        HOME</a>
+                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="{% url 'leaderboardIndex' %}">
+
+                        RANKING</a></li><li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{% url 'eventPageIndex' %}">
+
+                        EVENTS</a>
+                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="{% url 'usersIndex' %}">
+
+                        PROFILE</a></li></ul>
+
+        </div>
+    </nav>
+</section>
+
+<section class="engine"><a href=""></a></section><section class="header4 cid-rPyGj6EMpi mbr-parallax-background" id="header4-0">
+
+
+
+    <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(35, 35, 35);">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="media-content col-md-10">
+
+
+                <div class="mbr-text align-center mbr-white pb-3">
+
+                </div>
+
+            </div>
+            <div class="mbr-figure pt-5">
+                <img src="static/Homepage/assets/images/lipscomblongsh-khc20-1a-900x900.png" alt="logo" title="" style="width: 35%;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mbr-section info3 cid-rPyOulYpgv mbr-parallax-background" id="info3-2">
+
+
+
+    <div class="mbr-overlay" style="opacity: 0.6; background-color: rgb(35, 35, 35);">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="media-container-column title col-12 col-md-10">
+                <h2 class="align-left mbr-bold mbr-white pb-3 mbr-fonts-style display-2">
+                    ABOUT US</h2>
+                <h3 class="mbr-section-subtitle align-left mbr-light mbr-white pb-3 mbr-fonts-style display-5">
+                    Video Games And Stuff At Lipscomb University</h3>
+                <p class="mbr-text align-left mbr-white mbr-fonts-style display-7">
+                    I don't know anything about longshot gaming oops.I don't know anything about longshot gaming oops.I don't know anything about longshot gaming oops.I don't know anything about longshot gaming oops.I don't know anything about longshot gaming oops.I don't know anything about longshot gaming oops.I don't know anything about longshot gaming oops.I don't know anything about longshot gaming oops.I don't know anything about longshot gaming oops.I don't know anything about longshot gaming oops.I don't know anything about longshot gaming oops.I don't know anything about longshot gaming oops.I don't know anything about longshot gaming oops.</p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section once="footers" class="cid-rPyToCgTij" id="footer7-8">
+
+
+
+
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+
+            <div class="row social-row">
+                <div class="social-list align-right pb-2">
+
+
+
+
+
+
+                <div class="soc-item">
+
+                            <a href="https://www.instagram.com/lu.longshot.gaming/?hl=en" target="_blank"><span class="mbr-iconfont mbr-iconfont-social socicon-instagram socicon"></span></a>
+
+                    </div><div class="soc-item">
+
+                            <a href="https://www.facebook.com/LU.longshot.gaming" target="_blank"><span class="mbr-iconfont mbr-iconfont-social socicon-facebook socicon"></span></a>
+
+                    </div></div>
+            </div>
+            <div class="row row-copirayt">
+                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">longshotgaming@lipscomb.edu</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="static/Homepage/assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="static/Homepage/assets/popper/popper.min.js"></script>
+  <script src="static/Homepage/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script async src="static/Homepage/assets/tether/tether.min.js"></script>
+  <script async src="static/Homepage/assets/parallax/jarallax.min.js"></script>
+  <script async src="static/Homepage/assets/dropdown/js/nav-dropdown.js"></script>
+  <script async src="static/Homepage/assets/dropdown/js/navbar-dropdown.js"></script>
+  <script async src="static/Homepage/assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script async src="static/Homepage/assets/smoothscroll/smooth-scroll.js"></script>
+  <script async src="static/Homepage/assets/theme/js/script.js"></script>
+
+
+</body>
 </html>
