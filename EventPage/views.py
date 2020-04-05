@@ -57,5 +57,5 @@ def importCalendar():
 def index(request):
     context = {}
     prettyEvents = importCalendar()
-    print(prettyEvents['events'])
+    #print(prettyEvents['events'])
     return render(request, "EventPage/index.html", prettyEvents)
