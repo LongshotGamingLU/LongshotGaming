@@ -1,6 +1,7 @@
 # Created by https://www.gitignore.io
 
 GlobalScss/*
+google-credentials.json
 
 ### OSX ###
 .DS_Store
