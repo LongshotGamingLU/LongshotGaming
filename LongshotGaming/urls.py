@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
+from . import views
 
 urlpatterns = [
     path('', include('Homepage.urls')),
@@ -25,5 +28,9 @@ urlpatterns = [
     path('event-page/', include('EventPage.urls')),
     path('coming-soon/', include('ComingSoon.urls')),
     path('admin/', admin.site.urls),
-    url(r'^oauth/', include('social_django.urls', namespace='social'))
-]
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
+    path('404/', views.page_not_found, name='handler404'),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler404 = 'LongshotGaming.views.page_not_found'
+handler500 = 'LongshotGaming.views.server_error'

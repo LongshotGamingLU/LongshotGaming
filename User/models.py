@@ -10,3 +10,6 @@ class User(models.Model):
     first_name = models.CharField(max_length=64, blank=False, default="")
     last_name = models.CharField(max_length=64, blank=False, default="")
     picture = models.CharField(max_length=512, blank=False, default="static/img/users/default.png")
+
+    def __str__(self):
+        return "<" + str(self.email) + ", " + str(self.first_name) + ", " + str(self.last_name) + ">"

@@ -13,6 +13,10 @@ def lastDayOfMonth(any_day):
     next_month = any_day.replace(day=28) + datetime.timedelta(days=4)  # this will never fail
     return next_month - datetime.timedelta(days=next_month.day)
 
+def lastDayOfNextMonth(any_day):
+    two_months = any_day.replace(day=28) + datetime.timedelta(days=38)
+    return two_months - datetime.timedelta(days=two_months.day)
+
 # Imports calendar from lu.longshotgaming@gmail.com for current month
 def importCalendar():
     credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
@@ -20,7 +24,7 @@ def importCalendar():
 
     now = datetime.datetime.utcnow().isoformat() + 'Z'
     monthBegin = datetime.datetime.today().replace(day=1)
-    monthEnd = lastDayOfMonth(datetime.datetime.today())
+    monthEnd = lastDayOfNextMonth(datetime.datetime.today())
 
     events_result = service.events().list(calendarId=CAL_ID,timeMin=(monthBegin.isoformat() + 'Z'),timeMax=(monthEnd.isoformat() + 'Z')).execute()
 
@@ -34,6 +38,8 @@ def importCalendar():
     prettyEvents = {
         'events': []
     }
+
+    # Format the datetime in a uniform manner, so that it's easy for front-end guys to deal with
     for e in events:
         if (e.get('summary') != None):
             if (e['start'].get('date') != None):
@@ -50,6 +56,8 @@ def importCalendar():
         else:
             print("Uknown summary for event. Skipping event.")
     
+    # Sort events by date
+    prettyEvents['events'].sort(key=lambda x: x[0])
     return prettyEvents
             
 
@@ -57,5 +65,4 @@ def importCalendar():
 def index(request):
     context = {}
     prettyEvents = importCalendar()
-    #print(prettyEvents['events'])
     return render(request, "EventPage/index.html", prettyEvents)

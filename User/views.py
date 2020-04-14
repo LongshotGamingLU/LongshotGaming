@@ -5,14 +5,19 @@ from django.contrib import messages
 
 from django.shortcuts import render, redirect
 from User.models import User
+from Leaderboard.views import getScore
 
 # Use Django's built in functions to save/update a user with the following fields, userID is not necessary
 def saveOrUpdateUser(email, username, first_name, last_name, picture, userId=-1):
     user = getUser(email=email)
     if user == None:
-        userId = User.objects.count()
+        if (User.objects.count() == 0):
+            userId = User.objects.count()
+        else:
+            userId = User.objects.order_by("-userId")[0].userId + 1
     else:
         userId = user.userId
+
     User.objects.update_or_create(userId=userId, email=email, username=username, first_name=first_name, last_name=last_name, picture=picture)
 
 # Get the appropriate user, via userID or email
@@ -29,13 +34,15 @@ def getUser(userId=None, email=None):
             return users[0]
 
     # No user was found, just return None
-    print("No user found")
     return None
 
 
 def index(request):
     # Check if a user is logged in, then let the HTML/CSS generate accordingly
     user = request.session.get('user')
+    if user != None:
+        rank = getScore(user['userId'])
+        user['rank'] = rank.rank
 
     return render(request, "User/index.html", {"user": user})
 
@@ -51,12 +58,15 @@ def create_user(request, response, user, strategy, details, **kwargs):
     # Now that the user is saved to the database (or updated), we can attach a cookie to the local session
     # with information about our user
     user = getUser(email=details['email'])
+    rank = getScore(user.userId)
     request.session['user'] = {
         'email': user.email,
         'username': user.username,
         'first_name': user.first_name,
         'last_name': user.last_name,
-        'picture': user.picture
+        'picture': user.picture,
+        'rank': rank.rank,
+        'userId': user.userId
     }
 
     # Uncomment these print statements to see pipeline details
