@@ -1,0 +1,18 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <header>
+
+    </header>
+
+    <body>
+        <h1>Here's the events :D</h1>
+
+        {% for event in events %}
+            <label><b>Date</b>: {{ event.0 }}</label> <br />
+            <label><b>Summary</b>: {{ event.1 }}</label> <br />
+            <br />
+        {% endfor %}
+    </body>
+</html>
