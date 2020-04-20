@@ -50,16 +50,16 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown nav-right navbar-nav-top-padding" data-app-modern-menu="true"><li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="index.html">
+                    <a class="nav-link link text-white display-4" href="{% url 'homepageIndex' %}">
 
                         HOME</a>
-                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="index.html">
+                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="{% url 'leaderboardIndex' %}">
 
                         RANKING</a></li><li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="index.html">
+                    <a class="nav-link link text-white display-4" href="{% url 'eventPageIndex' %}">
 
                         EVENTS</a>
-                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="page1.html">
+                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="{% url 'usersIndex' %}">
 
                         PROFILE</a></li></ul>
 
@@ -97,9 +97,11 @@
         <div class="media-container-row">
             <div class="mbr-text col-12 mbr-fonts-style display-7 col-md-8">
               {% for event in events %}
+              <div style="nth-child(even): {background-color: #333333;}">
                   <p><b>Date</b>: {{ event.0 }}</p> <br />
                   <p><b>Summary</b>: {{ event.1 }}</p> <br />
                   <br />
+              </div>
               {% endfor %}
               </div>
         </div>

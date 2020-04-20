@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <header>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 15px;
+                text-align: left;
+                font-weight: 1;
+            }
+            
+            tr:first-child {
+                border-bottom: 2px solid black;
+            }
+
+            tr:first-child th {
+                font-weight: bold;
+            }
+
+            tr:nth-child(even) {
+                background-color: #eee;
+            }
+        </style>
+    </header>
+
+    <body>
+        <table style="width:100%">
+            <tr>
+                <th>First Name</th> 
+                <th>Last Name</th> 
+                <th>Rank</th> 
+                <th>Games Won</th> 
+                <th>Games Lost</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <th>{{ user.first_name }}</th>
+                <th>{{ user.last_name }}</th>
+                <th>{{ user.rank }}</th>
+                <th>{{ user.gamesWon }}</th>
+                <th>{{ user.gamesLost }}</th>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
